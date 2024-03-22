@@ -1,15 +1,19 @@
 # Tests out the post to mastodon action
 name: Post to Mastodon
-on: [pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Post to Mastodon
-      uses: .
+      uses: ./
       with:
         instance: 'https://cosocial.ca'
         token: ${{ secrets.MASTODON_TOKEN }}
-        status: 'Hello, World!'
+        status: Hello, World! With 'single quotes' and "double quotes"!
         visibility: 'private'

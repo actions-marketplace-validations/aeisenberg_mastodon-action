@@ -25,5 +25,10 @@ runs:
   using: 'composite'
   steps:
     - shell: bash
+      env:
+        INSTANCE: ${{ inputs.instance }}
+        TOKEN: ${{ inputs.token }}
+        STATUS: ${{ inputs.status }}
+        VISIBILITY: ${{ inputs.visibility }}
       run: |
-        bash post.sh ${{ inputs.instance }} ${{ inputs.token }} ${{ inputs.status }} ${{ inputs.visibility }}
+        bash post.sh "$INSTANCE" "$TOKEN" "$STATUS" "$VISIBILITY"
