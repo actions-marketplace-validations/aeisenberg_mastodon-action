@@ -1,6 +1,9 @@
 # An action for posting to the mastodon social network
 name: 'Mastodon Post'
 description: 'Post to Mastodon'
+branding:
+  icon: 'at-sign'
+  color: 'blue'
 inputs:
   instance:
     description: 'The instance to post to'
