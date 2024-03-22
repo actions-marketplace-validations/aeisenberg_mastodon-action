@@ -1,0 +1,29 @@
+# An action for posting to the mastodon social network
+name: 'Mastodon Post'
+description: 'Post to Mastodon'
+inputs:
+  instance:
+    description: 'The instance to post to'
+    required: true
+  token:
+    description: 'The access token for the account'
+    required: true
+  status:
+    description: 'The status to post'
+    required: true
+  visibility:
+    description: 'The visibility of the post (public, unlisted, private, direct)'
+    required: false
+    options:
+      - public
+      - unlisted
+      - private
+      - direct
+    default: 'public'
+
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      run: |
+        bash post.sh ${{ inputs.instance }} ${{ inputs.token }} ${{ inputs.status }} ${{ inputs.visibility }}
